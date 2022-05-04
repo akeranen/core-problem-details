@@ -5,8 +5,8 @@
 CoRE Working Group                                            T. Fossati
 Internet-Draft                                                       arm
 Intended status: Standards Track                              C. Bormann
-Expires: 4 November 2022                          Universität Bremen TZI
-                                                              3 May 2022
+Expires: 5 November 2022                          Universität Bremen TZI
+                                                              4 May 2022
 
 
                  Concise Problem Details For CoAP APIs
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 November 2022.
+   This Internet-Draft will expire on 5 November 2022.
 
 Copyright Notice
 
@@ -68,12 +68,12 @@ Table of Contents
      1.1.  Requirements Language
    2.  Basic Problem Details
    3.  Extending Concise Problem Details
-     3.1.  Custom Problem Detail Entries
-     3.2.  Standard Problem Detail Entries
+     3.1.  Standard Problem Detail Entries
+     3.2.  Custom Problem Detail Entries
    4.  Security Considerations
    5.  IANA Considerations
-     5.1.  Custom Problem Detail Key registry
-     5.2.  Standard Problem Detail Key registry
+     5.1.  Standard Problem Detail Key registry
+     5.2.  Custom Problem Detail Key registry
      5.3.  Media Type
      5.4.  Content-Format
    6.  Normative References
@@ -85,8 +85,8 @@ Table of Contents
    REST response status information such as CoAP [RFC7252] response
    codes is sometimes not sufficient to convey enough information about
    an error to be helpful.  This specification defines a simple and
-   extensible framework to define CBOR tags to suit this purpose.  It is
-   designed to be reused by REST APIs, which can identify distinct
+   extensible framework to define CBOR data items to suit this purpose.
+   It is designed to be reused by REST APIs, which can identify distinct
    "problem types" specific to their needs.  Thus, API clients can be
    informed of both the high-level error class (using the response code)
    and the finer-grained details of the problem (using this vocabulary),
@@ -147,7 +147,7 @@ Table of Contents
 
    A number of problem detail entries, the Standard Problem Detail
    entries, are predefined (more predefined details can be registered,
-   see Section 3.2):
+   see Section 3.1):
 
    The title (key -1):
       A short, human-readable summary of the problem type.  It SHOULD
@@ -199,13 +199,31 @@ Table of Contents
 
    Generic attributes will be allocated in the standard-problem-detail-
    entries slot according to the registration procedure defined in
-   Section 3.2.
+   Section 3.1.
 
    Application-specific attributes will be allocated in the custom-
    problem-detail-entries slot according to the procedure described in
-   Section 3.1.
+   Section 3.2.
 
-3.1.  Custom Problem Detail Entries
+3.1.  Standard Problem Detail Entries
+
+   Beyond the Standard Problem Detail keys defined in Figure 2,
+   additional Standard Problem Detail keys can be registered in the
+   standard-problem-detail-entries slot (see Section 5.1).
+
+   Standard Problem Detail keys are negative integers, so they never can
+   conflict with Custom Problem Detail keys defined for a problem type
+   (which are unsigned integers or URIs.)
+
+   In summary, the keys for Standard Problem Detail entries are in a
+   global namespace that is not specific to a particular application
+   domain.
+
+   Consumers of a Concise Problem Details instance MUST ignore any
+   Standard Problem Detail entries that they do not recognize; this
+   allows problem types to evolve.
+
+3.2.  Custom Problem Detail Entries
 
    Applications may extend the Problem Details document with additional
    entries to convey additional, application-specific information.
@@ -214,7 +232,7 @@ Table of Contents
    slot, and are nested into a map specific to that application.  The
    map key can either be a URI (controlled by the entity defining this
    extension), or an unsigned int.  Only the latter needs to be
-   registered (Section 5.1).  Within the nested map any number of
+   registered (Section 5.2).  Within the nested map any number of
    attributes can exist.  When the extension is registered (i.e.,
    unsigned int) the semantics of each custom attribute MUST be
    described in the documentation that goes along with the registration.
@@ -226,79 +244,59 @@ Table of Contents
    An example of a custom extension using a URI as custom-problem-
    detail-entries key is shown in Figure 3.
 
-{
-  / title /       -1: "title of the error",
-  / detail /      -2: "detailed information about the error",
-  / instance /    -3: "coaps://pd.example/FA317434-4D10-436F-97C8-A0ADAC996493",
+       {
+         / title /       -1: "title of the error",
+         / detail /      -2: "detailed information about the error",
+         / instance /    -3: "coaps://pd.example/FA317434",
 
-  "tag:3gpp.org,2022-03:TS29112": {
-    / cause /  0: "machine readable error cause",
-    / invalidParams / 1: [
-      [
-        / param / "first parameter name",
-        / reason / "must be a positive integer"
-      ],
-      [
-        / param / "second parameter name"
-      ]
-    ],
-    / supportedFeatures / 2: "d34db33f"
-  }
-}
+         "tag:3gpp.org,2022-03:TS29112": {
+           / cause /  0: "machine readable error cause",
+           / invalidParams / 1: [
+             [
+               / param / "first parameter name",
+               / reason / "must be a positive integer"
+             ],
+             [
+               / param / "second parameter name"
+             ]
+           ],
+           / supportedFeatures / 2: "d34db33f"
+         }
+       }
 
-               Figure 3: Example Extension with URI key
+                  Figure 3: Example Extension with URI key
 
    The same example but using a registered unsigned int as custom-
    problem-detail-entries key is shown in Figure 4.
 
-{
-  / title /       -1: "title of the error",
-  / detail /      -2: "detailed information about the error",
-  / instance /    -3: "coaps://pd.example/FA317434-4D10-436F-97C8-A0ADAC996493",
+       {
+         / title /       -1: "title of the error",
+         / detail /      -2: "detailed information about the error",
+         / instance /    -3: "coaps://pd.example/FA317434",
 
-  10: {
-    / cause /  0: "machine readable error cause",
-    / invalidParams / 1: [
-      [
-        / param / "first parameter name",
-        / reason / "must be a positive integer"
-      ],
-      [
-        / param / "second parameter name"
-      ]
-    ],
-    / supportedFeatures / 2: "d34db33f"
-  }
-}
+         10: {
+           / cause /  0: "machine readable error cause",
+           / invalidParams / 1: [
+             [
+               / param / "first parameter name",
+               / reason / "must be a positive integer"
+             ],
+             [
+               / param / "second parameter name"
+             ]
+           ],
+           / supportedFeatures / 2: "d34db33f"
+         }
+       }
 
-    Figure 4: Example Extension with unsigned int (registered) key
+       Figure 4: Example Extension with unsigned int (registered) key
 
    In summary, the keys for Custom Problem Detail entries are grouped in
    namespaces specific to a given application domain, the documentation
    of which defines these entries.  Consumers of a Concise Problem
-   Deatails instance MUST ignore any Custom Problem Detail entries that
+   Details instance MUST ignore any Custom Problem Detail entries that
    they do not recognize; this allows problem types to evolve and
-   include additional information in the future.  Problem detail entries
-   are always elective, never critical, in the terminology of
-   Section 5.4.1 of [RFC7252].
-
-3.2.  Standard Problem Detail Entries
-
-   Beyond the Standard Problem Detail keys defined in Figure 2,
-   additional Standard Problem Detail keys can be registered in the
-   standard-problem-detail-entries slot (see Section 5.2).
-
-   Standard Problem Detail keys are negative integers, so they never can
-   conflict with Custom Problem Detail keys defined for a problem type
-   (which are unsigned integers or URIs.)
-
-   In summary, the keys for Standard Problem Detail entries are in a
-   global namespace that not specific to a particular application
-   domain.
-
-   Consumers of a Concise Problem Deatails instance MUST ignore any
-   Standard Problem Detail entries that they do not recognize; this
-   allows problem types to evolve.
+   include additional information in the future.
 
 4.  Security Considerations
 
@@ -311,36 +309,7 @@ Table of Contents
    // RFC Editor: please replace RFC XXXX with this RFC number and
    // remove this note.
 
-5.1.  Custom Problem Detail Key registry
-
-   This specification defines a new sub-registry for Custom Problem
-   Detail Keys in the CoRE Parameters registry [IANA.core-parameters],
-   with the policy "first come first served" [RFC8126].
-
-   Each entry in the registry must include:
-
-   key value:
-      a positive integer to be used as the value of the key
-
-   name:
-      a name that could be used in implementations for the key
-
-   uri:
-      an optional URI that is an alias for the integer key
-
-   type:
-      type of the data associated with the key; preferably in CDDL
-      notation
-
-   brief description:
-      a brief description
-
-   reference:
-      optionally a reference document
-
-   The sub-registry is initially empty.
-
-5.2.  Standard Problem Detail Key registry
+5.1.  Standard Problem Detail Key registry
 
    This specification defines a new sub-registry for Standard Problem
    Detail Keys in the CoRE Parameters registry [IANA.core-parameters],
@@ -384,6 +353,31 @@ Table of Contents
    +-------+----------+------+-----------------------------+-----------+
 
       Table 1: Initial Entries in Standard Problem Detail Key registry
+
+5.2.  Custom Problem Detail Key registry
+
+   This specification defines a new sub-registry for Custom Problem
+   Detail Keys in the CoRE Parameters registry [IANA.core-parameters],
+   with the policy "first come first served" [RFC8126].
+
+   Each entry in the registry must include:
+
+   key value:
+      a positive integer to be used as the value of the key
+
+   name:
+      a name that could be used in implementations for the key
+
+   uri:
+      an optional URI that is an alias for the integer key
+
+   brief description:
+      a brief description
+
+   reference:
+      a reference document that provides a CDDL description of the map
+
+   The sub-registry is initially empty.
 
 5.3.  Media Type
 
