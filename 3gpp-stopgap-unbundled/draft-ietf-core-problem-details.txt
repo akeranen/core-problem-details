@@ -85,7 +85,7 @@ Table of Contents
    REST response status information such as CoAP [RFC7252] response
    codes is sometimes not sufficient to convey enough information about
    an error to be helpful.  This specification defines a simple and
-   extensible framework to define CBOR [STD96] data items to suit this
+   extensible framework to define CBOR [STD94] data items to suit this
    purpose.  It is designed to be reused by REST APIs, which can
    identify distinct "problem types" specific to their needs.  Thus, API
    clients can be informed of both the high-level error class (using the
@@ -492,7 +492,7 @@ Table of Contents
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <https://www.rfc-editor.org/rfc/rfc3986>.
 
-   [STD96]    Bormann, C. and P. Hoffman, "Concise Binary Object
+   [STD94]    Bormann, C. and P. Hoffman, "Concise Binary Object
               Representation (CBOR)", STD 94, RFC 8949,
               DOI 10.17487/RFC8949, December 2020,
               <https://www.rfc-editor.org/rfc/rfc8949>.
