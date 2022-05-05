@@ -5,8 +5,8 @@
 CoRE Working Group                                            T. Fossati
 Internet-Draft                                                       arm
 Intended status: Standards Track                              C. Bormann
-Expires: 5 November 2022                          Universität Bremen TZI
-                                                              4 May 2022
+Expires: 6 November 2022                          Universität Bremen TZI
+                                                              5 May 2022
 
 
                  Concise Problem Details For CoAP APIs
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 November 2022.
+   This Internet-Draft will expire on 6 November 2022.
 
 Copyright Notice
 
@@ -85,12 +85,12 @@ Table of Contents
    REST response status information such as CoAP [RFC7252] response
    codes is sometimes not sufficient to convey enough information about
    an error to be helpful.  This specification defines a simple and
-   extensible framework to define CBOR data items to suit this purpose.
-   It is designed to be reused by REST APIs, which can identify distinct
-   "problem types" specific to their needs.  Thus, API clients can be
-   informed of both the high-level error class (using the response code)
-   and the finer-grained details of the problem (using this vocabulary),
-   as shown in Figure 1.
+   extensible framework to define CBOR [STD96] data items to suit this
+   purpose.  It is designed to be reused by REST APIs, which can
+   identify distinct "problem types" specific to their needs.  Thus, API
+   clients can be informed of both the high-level error class (using the
+   response code) and the finer-grained details of the problem (using
+   this vocabulary), as shown in Figure 1.
 
                       +--------+           +--------+
                       |  CoAP  |           |  CoAP  |
@@ -491,6 +491,11 @@ Table of Contents
               Resource Identifier (URI): Generic Syntax", STD 66,
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <https://www.rfc-editor.org/rfc/rfc3986>.
+
+   [STD96]    Bormann, C. and P. Hoffman, "Concise Binary Object
+              Representation (CBOR)", STD 94, RFC 8949,
+              DOI 10.17487/RFC8949, December 2020,
+              <https://www.rfc-editor.org/rfc/rfc8949>.
 
 Acknowledgments
 
