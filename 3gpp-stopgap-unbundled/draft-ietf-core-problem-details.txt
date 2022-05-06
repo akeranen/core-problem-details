@@ -5,8 +5,8 @@
 CoRE Working Group                                            T. Fossati
 Internet-Draft                                                       arm
 Intended status: Standards Track                              C. Bormann
-Expires: 6 November 2022                          Universität Bremen TZI
-                                                              5 May 2022
+Expires: 7 November 2022                          Universität Bremen TZI
+                                                              6 May 2022
 
 
                  Concise Problem Details For CoAP APIs
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 November 2022.
+   This Internet-Draft will expire on 7 November 2022.
 
 Copyright Notice
 
@@ -248,6 +248,9 @@ Table of Contents
    therefore useful for experimenting during the development cycle and
    for applications deployed in environments where producers and
    consumers of Concise Problem Details are more tightly integrated.
+   The URI form thus serves a similar function as "private use" numbers
+   would serve if such a range were registered for the unsigned
+   integers.
 
    Note that the URI given for the extension is for identification
    purposes only and, even if dereferenceable in principle, MUST NOT be
