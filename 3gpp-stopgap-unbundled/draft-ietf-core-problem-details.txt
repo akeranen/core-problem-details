@@ -730,7 +730,7 @@ Contributors
    URI:   http://peteroupc.github.io/CBOR/
 
 
-   Peter defined CBOR tag 38, basis of Appendix A
+   Peter defined CBOR tag 38, basis of Appendix A.
 
 Authors' Addresses
 
