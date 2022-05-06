@@ -1195,13 +1195,16 @@ Details for HTTP APIs defined in RFC 7807.<a href="#section-abstract-1" class="p
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="xref">Appendix B</a>.  <a href="#name-interworking-with-rfc-7807" class="xref">Interworking with RFC 7807</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-C" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#appendix-C" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-D" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#appendix-D" class="xref"></a><a href="#name-contributors" class="xref">Contributors</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-E" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1264,7 +1267,8 @@ Thus, API clients can be informed of both the high-level error class
 <a href="#name-problem-details-example-wit" class="selfRef">Problem Details: Example with CoAP</a>
         </figcaption></figure>
 </div>
-<p id="section-1-3">The framework presented is largely inspired by the Problem Details for HTTP APIs defined in <span>[<a href="#RFC7807" class="xref">RFC7807</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-3">The framework presented is largely inspired by the Problem Details for HTTP APIs defined in <span>[<a href="#RFC7807" class="xref">RFC7807</a>]</span>.
+<a href="#comp7807" class="xref">Appendix B</a> discusses applications where interworking with <span>[<a href="#RFC7807" class="xref">RFC7807</a>]</span> is required.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <div id="requirements-language">
 <section id="section-1.1">
         <h3 id="name-requirements-language">
@@ -1637,7 +1641,31 @@ values<a href="#section-5.2-3.8.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-5.2-4">The sub-registry is initially empty.<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.2-4">Initial entries in this sub-registry are as follows:<a href="#section-5.2-4" class="pilcrow">¶</a></p>
+<span id="name-initial-entries-in-custom-p"></span><div id="cpdk">
+<table class="center" id="table-2">
+          <caption>
+<a href="#table-2" class="selfRef">Table 2</a>:
+<a href="#name-initial-entries-in-custom-p" class="selfRef">Initial Entries in Custom Problem Detail Key registry</a>
+          </caption>
+<thead>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Key value</th>
+              <th class="text-left" rowspan="1" colspan="1">Name</th>
+              <th class="text-left" rowspan="1" colspan="1">Brief description</th>
+              <th class="text-left" rowspan="1" colspan="1">Reference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">7807</td>
+              <td class="text-left" rowspan="1" colspan="1">tunnel-7807</td>
+              <td class="text-left" rowspan="1" colspan="1">Carry RFC 7807 problem details in a Concise Problem Details data item</td>
+              <td class="text-left" rowspan="1" colspan="1">RFCXXXX</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
 </section>
 </div>
 <div id="media-type">
@@ -1648,9 +1676,9 @@ values<a href="#section-5.2-3.8.1" class="pilcrow">¶</a></p>
 <p id="section-5.3-1">IANA is requested to add the following Media-Type to the "Media Types"
 registry <span>[<a href="#IANA.media-types" class="xref">IANA.media-types</a>]</span>.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 <span id="name-new-media-type-application-"></span><div id="new-media-type">
-<table class="left" id="table-2">
+<table class="left" id="table-3">
           <caption>
-<a href="#table-2" class="selfRef">Table 2</a>:
+<a href="#table-3" class="selfRef">Table 3</a>:
 <a href="#name-new-media-type-application-" class="selfRef">New Media Type application/concise-problem-details+cbor</a>
           </caption>
 <thead>
@@ -1761,9 +1789,9 @@ or IETF Applications and Real-Time Area (art@ietf.org)<a href="#section-5.3-3.22
 <a href="https://www.iana.org/assignments/core-parameters#content-formats" class="relref">"CoAP Content-Formats"</a>
 sub-registry, within the "Constrained RESTful Environments (CoRE)
 Parameters" Registry <span>[<a href="#IANA.core-parameters" class="xref">IANA.core-parameters</a>]</span>, as follows:<a href="#section-5.4-1" class="pilcrow">¶</a></p>
-<span id="name-new-content-format"></span><table class="left" id="table-3">
+<span id="name-new-content-format"></span><table class="left" id="table-4">
           <caption>
-<a href="#table-3" class="selfRef">Table 3</a>:
+<a href="#table-4" class="selfRef">Table 4</a>:
 <a href="#name-new-content-format" class="selfRef">New Content-Format</a>
           </caption>
 <thead>
@@ -1870,9 +1898,17 @@ IANA is requested to replace the reference for this registration with
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.ietf-httpapi-rfc7807bis">[I-D.ietf-httpapi-rfc7807bis]</dt>
+        <dd>
+<span class="refAuthor">Nottingham, M.</span>, <span class="refAuthor">Wilde, E.</span>, and <span class="refAuthor">S. Dalal</span>, <span class="refTitle">"Problem Details for HTTP APIs"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-httpapi-rfc7807bis-02</span>, <time datetime="2022-04-16" class="refDate">16 April 2022</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-rfc7807bis-02">https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-rfc7807bis-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RDF">[RDF]</dt>
         <dd>
 <span class="refAuthor">Cyganiak, R.</span>, <span class="refAuthor">Wood, D.</span>, and <span class="refAuthor">M. Lanthaler</span>, <span class="refTitle">"RDF 1.1 Concepts and Abstract Syntax"</span>, <span class="refContent">W3C Recommendation</span>, <time datetime="2014-02-25" class="refDate">25 February 2014</time>, <span>&lt;<a href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4648">[RFC4648]</dt>
+        <dd>
+<span class="refAuthor">Josefsson, S.</span>, <span class="refTitle">"The Base16, Base32, and Base64 Data Encodings"</span>, <span class="seriesInfo">RFC 4648</span>, <span class="seriesInfo">DOI 10.17487/RFC4648</span>, <time datetime="2006-10" class="refDate">October 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4648">https://www.rfc-editor.org/rfc/rfc4648</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="Unicode-14.0.0">[Unicode-14.0.0]</dt>
       <dd>
@@ -2048,23 +2084,63 @@ D8 26                   # tag(38)
 </div>
 </section>
 </div>
-<div id="acknowledgments">
+<div id="comp7807">
 <section id="appendix-B">
+      <h2 id="name-interworking-with-rfc-7807">
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-interworking-with-rfc-7807" class="section-name selfRef">Interworking with RFC 7807</a>
+      </h2>
+<p id="appendix-B-1">On certain occasions, it will be necessary to carry ("tunnel")
+<span>[<a href="#RFC7807" class="xref">RFC7807</a>]</span> problem details in a Concise Problem Details item.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2">This appendix defines a Custom Problem Details entry for that purpose.
+This is assigned Custom Problem Detail key 7807 in <a href="#iana-cpdk" class="xref">Section 5.2</a>.
+Its structure is:<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+<div id="appendix-B-3">
+<pre class="lang-cddl sourcecode">
+tunnel-7807 = {
+  ? &amp;(type: 0) =&gt; ~uri
+  ? &amp;(status: 1) =&gt; 0..999
+  * text =&gt; any
+}
+</pre><a href="#appendix-B-3" class="pilcrow">¶</a>
+</div>
+<p id="appendix-B-4">To carry an <span>[<a href="#RFC7807" class="xref">RFC7807</a>]</span> problem details JSON object in a Concise Problem
+Details item, first convert the JSON object to CBOR as per <span><a href="https://rfc-editor.org/rfc/rfc8949#section-6.2" class="relref">Section 6.2</a> of [<a href="#STD94" class="xref">STD94</a>]</span>.  Create an empty Concise Problem Details data item.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
+<p id="appendix-B-5">Move the values for "title", "detail", and "instance", if present,
+from the <span>[<a href="#RFC7807" class="xref">RFC7807</a>]</span> problem details to the equivalent Standard Problem
+Detail entries.
+Create a Custom Problem Detail entry with key 7807.
+Move the values for "type" and "status", if present, to the equivalent
+keys 0 and 1 of the Custom Problem Detail entry.
+Move all remaining key/value pairs (additional members as per <span><a href="https://rfc-editor.org/rfc/rfc7807#section-3.2" class="relref">Section 3.2</a> of [<a href="#RFC7807" class="xref">RFC7807</a>]</span>) in the converted <span>[<a href="#RFC7807" class="xref">RFC7807</a>]</span> problem
+details object to the Custom Problem Details map unchanged.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
+<p id="appendix-B-6">The inverse direction, carrying Concise Problem Details in a Problem
+Details JSON object requires the additional support provided by
+<span>[<a href="#I-D.ietf-httpapi-rfc7807bis" class="xref">I-D.ietf-httpapi-rfc7807bis</a>]</span>, which is planned to create the HTTP Problem Types
+Registry.  A Problem Type can then be registered that extracts
+top-level items from the Concise Problem Details item in a similar way
+to the conversion described above, and which carries the rest of the
+Concise Problem Details item in an additional member via base64url
+encoding without padding (<span><a href="https://rfc-editor.org/rfc/rfc4648#section-5" class="relref">Section 5</a> of [<a href="#RFC4648" class="xref">RFC4648</a>]</span>).  Details can be defined
+in a separate document when the work on <span>[<a href="#I-D.ietf-httpapi-rfc7807bis" class="xref">I-D.ietf-httpapi-rfc7807bis</a>]</span> is completed.<a href="#appendix-B-6" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="acknowledgments">
+<section id="appendix-C">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-B-1"><span class="contact-name">Mark Nottingham</span> and <span class="contact-name">Erik Wilde</span>, authors of RFC 7807.
+<p id="appendix-C-1"><span class="contact-name">Mark Nottingham</span> and <span class="contact-name">Erik Wilde</span>, authors of RFC 7807.
 <span class="contact-name">Klaus Hartke</span> and <span class="contact-name">Jaime Jiménez</span>, co-authors of an earlier generation of
 this specification.
-<span class="contact-name">Christian Amsüss</span> and <span class="contact-name">Marco Tiloca</span> for review and comments on this document.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
-<p id="appendix-B-2">For <a href="#tag38" class="xref">Appendix A</a>, John Cowan and Doug Ewell are also to be acknowledged.
+<span class="contact-name">Christian Amsüss</span> and <span class="contact-name">Marco Tiloca</span> for review and comments on this document.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-2">For <a href="#tag38" class="xref">Appendix A</a>, John Cowan and Doug Ewell are also to be acknowledged.
 The content of an earlier version of this appendix was also discussed
 in the "apps-discuss at ietf.org" and "ltru at ietf.org" mailing
-lists.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+lists.<a href="#appendix-C-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="contributors">
-<section id="appendix-C">
+<section id="appendix-D">
       <h2 id="name-contributors">
 <a href="#name-contributors" class="section-name selfRef">Contributors</a>
       </h2>
@@ -2079,11 +2155,11 @@ lists.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
 <a href="http://peteroupc.github.io/CBOR/" class="url">http://peteroupc.github.io/CBOR/</a>
 </div>
 </address>
-<p id="appendix-C-1">Peter defined CBOR tag 38, basis of <a href="#tag38" class="xref">Appendix A</a>.<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-1">Peter defined CBOR tag 38, basis of <a href="#tag38" class="xref">Appendix A</a>.<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-D">
+<section id="appendix-E">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>

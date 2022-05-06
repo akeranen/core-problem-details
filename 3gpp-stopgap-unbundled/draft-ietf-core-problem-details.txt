@@ -84,6 +84,7 @@ Table of Contents
      A.1.  Introduction
      A.2.  Detailed Semantics
      A.3.  Examples
+   Appendix B.  Interworking with RFC 7807
    Acknowledgments
    Contributors
    Authors' Addresses
@@ -118,7 +119,8 @@ Table of Contents
                 Figure 1: Problem Details: Example with CoAP
 
    The framework presented is largely inspired by the Problem Details
-   for HTTP APIs defined in [RFC7807].
+   for HTTP APIs defined in [RFC7807].  Appendix B discusses
+   applications where interworking with [RFC7807] is required.
 
 1.1.  Requirements Language
 
@@ -418,7 +420,18 @@ Table of Contents
       including a CDDL description, that describes all inside keys and
       values
 
-   The sub-registry is initially empty.
+   Initial entries in this sub-registry are as follows:
+
+      +=======+=============+===========================+===========+
+      | Key   | Name        | Brief description         | Reference |
+      | value |             |                           |           |
+      +=======+=============+===========================+===========+
+      | 7807  | tunnel-7807 | Carry RFC 7807 problem    | RFCXXXX   |
+      |       |             | details in a Concise      |           |
+      |       |             | Problem Details data item |           |
+      +-------+-------------+---------------------------+-----------+
+
+       Table 2: Initial Entries in Custom Problem Detail Key registry
 
 5.3.  Media Type
 
@@ -433,7 +446,7 @@ Table of Contents
    |                            |                            |5.3      |
    +----------------------------+----------------------------+---------+
 
-      Table 2: New Media Type application/concise-problem-details+cbor
+      Table 3: New Media Type application/concise-problem-details+cbor
 
    Type name:  application
    Subtype name:  concise-problem-details+cbor
@@ -471,7 +484,7 @@ Table of Contents
    | details+cbor                 |                |      |           |
    +------------------------------+----------------+------+-----------+
 
-                       Table 3: New Content-Format
+                       Table 4: New Content-Format
 
    TBD1 is to be assigned from the space 256..999.
 
@@ -552,10 +565,21 @@ Table of Contents
 
 6.2.  Informative References
 
+   [I-D.ietf-httpapi-rfc7807bis]
+              Nottingham, M., Wilde, E., and S. Dalal, "Problem Details
+              for HTTP APIs", Work in Progress, Internet-Draft, draft-
+              ietf-httpapi-rfc7807bis-02, 16 April 2022,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-
+              rfc7807bis-02>.
+
    [RDF]      Cyganiak, R., Wood, D., and M. Lanthaler, "RDF 1.1
               Concepts and Abstract Syntax", W3C Recommendation, 25
               February 2014,
               <http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/>.
+
+   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
+              Encodings", RFC 4648, DOI 10.17487/RFC4648, October 2006,
+              <https://www.rfc-editor.org/rfc/rfc4648>.
 
    [Unicode-14.0.0]
               The Unicode Consortium, "The Unicode Standard, Version
@@ -710,6 +734,46 @@ A.3.  Examples
             426F6E6A6F7572 # "Bonjour"
 
    (TODO: Add example with direction)
+
+Appendix B.  Interworking with RFC 7807
+
+   On certain occasions, it will be necessary to carry ("tunnel")
+   [RFC7807] problem details in a Concise Problem Details item.
+
+   This appendix defines a Custom Problem Details entry for that
+   purpose.  This is assigned Custom Problem Detail key 7807 in
+   Section 5.2.  Its structure is:
+
+   tunnel-7807 = {
+     ? &(type: 0) => ~uri
+     ? &(status: 1) => 0..999
+     * text => any
+   }
+
+   To carry an [RFC7807] problem details JSON object in a Concise
+   Problem Details item, first convert the JSON object to CBOR as per
+   Section 6.2 of [STD94].  Create an empty Concise Problem Details data
+   item.
+
+   Move the values for "title", "detail", and "instance", if present,
+   from the [RFC7807] problem details to the equivalent Standard Problem
+   Detail entries.  Create a Custom Problem Detail entry with key 7807.
+   Move the values for "type" and "status", if present, to the
+   equivalent keys 0 and 1 of the Custom Problem Detail entry.  Move all
+   remaining key/value pairs (additional members as per Section 3.2 of
+   [RFC7807]) in the converted [RFC7807] problem details object to the
+   Custom Problem Details map unchanged.
+
+   The inverse direction, carrying Concise Problem Details in a Problem
+   Details JSON object requires the additional support provided by
+   [I-D.ietf-httpapi-rfc7807bis], which is planned to create the HTTP
+   Problem Types Registry.  A Problem Type can then be registered that
+   extracts top-level items from the Concise Problem Details item in a
+   similar way to the conversion described above, and which carries the
+   rest of the Concise Problem Details item in an additional member via
+   base64url encoding without padding (Section 5 of [RFC4648]).  Details
+   can be defined in a separate document when the work on
+   [I-D.ietf-httpapi-rfc7807bis] is completed.
 
 Acknowledgments
 
