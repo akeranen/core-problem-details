@@ -6,7 +6,6 @@ CoRE Working Group                                            T. Fossati
 Internet-Draft                                                       arm
 Intended status: Standards Track                              C. Bormann
 Expires: 7 November 2022                          Universität Bremen TZI
-                                                                P. Occil
                                                               6 May 2022
 
 
@@ -86,6 +85,7 @@ Table of Contents
      A.2.  Detailed Semantics
      A.3.  Examples
    Acknowledgments
+   Contributors
    Authors' Addresses
 
 1.  Introduction
@@ -717,6 +717,15 @@ Acknowledgments
    also discussed in the "apps-discuss at ietf.org" and "ltru at
    ietf.org" mailing lists.
 
+Contributors
+
+   Peter Occil
+   Email: poccil14 at gmail dot com
+   URI:   http://peteroupc.github.io/CBOR/
+
+
+   Peter defined CBOR tag 38, basis of Appendix A
+
 Authors' Addresses
 
    Thomas Fossati
@@ -731,8 +740,3 @@ Authors' Addresses
    Germany
    Phone: +49-421-218-63921
    Email: cabo@tzi.org
-
-
-   Peter Occil
-   Email: poccil14 at gmail dot com
-   URI:   http://peteroupc.github.io/CBOR/
