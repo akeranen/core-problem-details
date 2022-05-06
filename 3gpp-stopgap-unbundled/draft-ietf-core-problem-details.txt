@@ -101,20 +101,20 @@ Table of Contents
    error class (using the response code) and the finer-grained details
    of the problem (using this vocabulary), as shown in Figure 1.
 
-                      +--------+           +--------+
-                      |  CoAP  |           |  CoAP  |
-                      | Client |           | Server |
-                      +----+---+           +----+---+
-                           |                    |
-                           | Request            |
-                           |------------------> |
-                           |                    |
-                           | <----------------- |
-                           | Error Response     |
-                           | with a CBOR Data   |
-                           | Item giving        |
-                           | Problem Details    |
-                           |                    |
+                    .--------.          .--------.
+                    |  CoAP  |          |  CoAP  |
+                    | Client |          | Server |
+                    '----+---'          '---+----'
+                         |                  |
+                         | Request          |
+                         o----------------->|
+                         |                  | (failure)
+                         |<-----------------o
+                         |   Error Response |
+                         |      with a CBOR |
+                         | data item giving |
+                         |  Problem Details |
+                         |                  |
 
                 Figure 1: Problem Details: Example with CoAP
 
