@@ -7,6 +7,7 @@
 <title>Concise Problem Details For CoAP APIs</title>
 <meta content="Thomas Fossati" name="author">
 <meta content="Carsten Bormann" name="author">
+<meta content="Peter Occil" name="author">
 <meta content='
        This document defines a "problem detail" as a way to carry
 machine-readable details of errors in a REST response to avoid the
@@ -1022,7 +1023,7 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <td class="right">May 2022</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Fossati &amp; Bormann</td>
+<td class="left">Fossati, et al.</td>
 <td class="center">Expires 7 November 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
@@ -1051,6 +1052,9 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <div class="author">
       <div class="author-name">C. Bormann</div>
 <div class="org">Universität Bremen TZI</div>
+</div>
+<div class="author">
+      <div class="author-name">P. Occil</div>
 </div>
 </dd>
 </dl>
@@ -1164,16 +1168,41 @@ Details for HTTP APIs defined in RFC 7807.<a href="#section-abstract-1" class="p
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.4">
                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-content-format" class="xref">Content-Format</a></p>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.5">
+                <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-cbor-tag-38" class="xref">CBOR Tag 38</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-references" class="xref">References</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.1">
+                <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.2">
+                <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#appendix-A" class="xref">Appendix A</a>.  <a href="#name-language-tagged-strings" class="xref">Language-Tagged Strings</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#appendix-A.1" class="xref">A.1</a>.  <a href="#name-introduction-2" class="xref">Introduction</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#appendix-A.2" class="xref">A.2</a>.  <a href="#name-detailed-semantics" class="xref">Detailed Semantics</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+                <p id="section-toc.1-1.7.2.3.1"><a href="#appendix-A.3" class="xref">A.3</a>.  <a href="#name-examples" class="xref">Examples</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#appendix-B" class="xref"></a><a href="#name-acknowledgments" class="xref">Acknowledgments</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
+            <p id="section-toc.1-1.9.1"><a href="#appendix-C" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1260,7 +1289,7 @@ structure (notated in CDDL <span>[<a href="#RFC8610" class="xref">RFC8610</a>]</
 <span id="name-problem-detail-data-item"></span><div id="cddl">
 <figure id="figure-2">
         <div id="section-2-2.1">
-<pre class="lang-CDDL sourcecode">
+<pre class="lang-cddl sourcecode">
 problem-details = non-empty&lt;{
   ? &amp;(title: -1) =&gt; text
   ? &amp;(detail: -2) =&gt; text
@@ -1394,7 +1423,7 @@ diagnostic/debugging procedures involving humans).<a href="#section-3.2-5" class
 key is shown in <a href="#fig-example-custom-with-uri" class="xref">Figure 3</a>.<a href="#section-3.2-6" class="pilcrow">¶</a></p>
 <span id="name-example-extension-with-uri-"></span><div id="fig-example-custom-with-uri">
 <figure id="figure-3">
-          <div class="alignCenter art-text artwork" id="section-3.2-7.1">
+          <div class="alignCenter art-cbor-diag art-text artwork" id="section-3.2-7.1">
 <pre>
 {
   / title /         -1: "title of the error",
@@ -1429,7 +1458,7 @@ the same example but using a registered unsigned int as
 <a href="#fig-example-custom-with-uint" class="xref">Figure 4</a>.<a href="#section-3.2-8" class="pilcrow">¶</a></p>
 <span id="name-example-extension-with-unsi"></span><div id="fig-example-custom-with-uint">
 <figure id="figure-4">
-          <div class="alignCenter art-text artwork" id="section-3.2-9.1">
+          <div class="alignCenter art-cbor-diag art-text artwork" id="section-3.2-9.1">
 <pre>
 {
   / title /         -1: "title of the error",
@@ -1755,68 +1784,282 @@ writing, the column "Content-Type" is called "Media type" and the
 column "Content Coding" is called "Encoding". <span class="cref" id="remove">This paragraph to be removed by RFC editor.</span><a href="#section-5.4-4" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="iana-tag38">
+<section id="section-5.5">
+        <h3 id="name-cbor-tag-38">
+<a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-cbor-tag-38" class="section-name selfRef">CBOR Tag 38</a>
+        </h3>
+<p id="section-5.5-1">In the registry "<a href="https://www.iana.org/assignments/cbor-tags#cbor-tags" class="relref">CBOR Tags</a>" <span>[<a href="#IANA.cbor-tags" class="xref">IANA.cbor-tags</a>]</span>,
+IANA has registered CBOR Tag 38.
+IANA is requested to replace the reference for this registration with
+<a href="#tag38" class="xref">Appendix A</a>, RFC XXXX.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <section id="section-6">
-      <h2 id="name-normative-references">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+      <h2 id="name-references">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<section id="section-6.1">
+        <h3 id="name-normative-references">
+<a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+        </h3>
 <dl class="references">
+<dt id="IANA.cbor-tags">[IANA.cbor-tags]</dt>
+        <dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR) Tags"</span>, <span>&lt;<a href="https://www.iana.org/assignments/cbor-tags">https://www.iana.org/assignments/cbor-tags</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="IANA.core-parameters">[IANA.core-parameters]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"Constrained RESTful Environments (CoRE) Parameters"</span>, <span>&lt;<a href="https://www.iana.org/assignments/core-parameters">https://www.iana.org/assignments/core-parameters</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IANA.media-types">[IANA.media-types]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"Media Types"</span>, <span>&lt;<a href="https://www.iana.org/assignments/media-types">https://www.iana.org/assignments/media-types</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC4647">[RFC4647]</dt>
+        <dd>
+<span class="refAuthor">Phillips, A., Ed.</span> and <span class="refAuthor">M. Davis, Ed.</span>, <span class="refTitle">"Matching of Language Tags"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 4647</span>, <span class="seriesInfo">DOI 10.17487/RFC4647</span>, <time datetime="2006-09" class="refDate">September 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc4647">https://www.rfc-editor.org/rfc/rfc4647</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5646">[RFC5646]</dt>
+        <dd>
+<span class="refAuthor">Phillips, A., Ed.</span> and <span class="refAuthor">M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc5646">https://www.rfc-editor.org/rfc/rfc5646</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC7252">[RFC7252]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Shelby, Z.</span>, <span class="refAuthor">Hartke, K.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"The Constrained Application Protocol (CoAP)"</span>, <span class="seriesInfo">RFC 7252</span>, <span class="seriesInfo">DOI 10.17487/RFC7252</span>, <time datetime="2014-06" class="refDate">June 2014</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7252">https://www.rfc-editor.org/rfc/rfc7252</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7807">[RFC7807]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Nottingham, M.</span> and <span class="refAuthor">E. Wilde</span>, <span class="refTitle">"Problem Details for HTTP APIs"</span>, <span class="seriesInfo">RFC 7807</span>, <span class="seriesInfo">DOI 10.17487/RFC7807</span>, <time datetime="2016-03" class="refDate">March 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7807">https://www.rfc-editor.org/rfc/rfc7807</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8126">[RFC8126]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Leiba, B.</span>, and <span class="refAuthor">T. Narten</span>, <span class="refTitle">"Guidelines for Writing an IANA Considerations Section in RFCs"</span>, <span class="seriesInfo">BCP 26</span>, <span class="seriesInfo">RFC 8126</span>, <span class="seriesInfo">DOI 10.17487/RFC8126</span>, <time datetime="2017-06" class="refDate">June 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8126">https://www.rfc-editor.org/rfc/rfc8126</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8610">[RFC8610]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Birkholz, H.</span>, <span class="refAuthor">Vigano, C.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Concise Data Definition Language (CDDL): A Notational Convention to Express Concise Binary Object Representation (CBOR) and JSON Data Structures"</span>, <span class="seriesInfo">RFC 8610</span>, <span class="seriesInfo">DOI 10.17487/RFC8610</span>, <time datetime="2019-06" class="refDate">June 2019</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8610">https://www.rfc-editor.org/rfc/rfc8610</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="STD66">[STD66]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc3986">https://www.rfc-editor.org/rfc/rfc3986</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="STD94">[STD94]</dt>
-    <dd>
+      <dd>
 <span class="refAuthor">Bormann, C.</span> and <span class="refAuthor">P. Hoffman</span>, <span class="refTitle">"Concise Binary Object Representation (CBOR)"</span>, <span class="seriesInfo">STD 94</span>, <span class="seriesInfo">RFC 8949</span>, <span class="seriesInfo">DOI 10.17487/RFC8949</span>, <time datetime="2020-12" class="refDate">December 2020</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8949">https://www.rfc-editor.org/rfc/rfc8949</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
-<div id="acknowledgments">
+<section id="section-6.2">
+        <h3 id="name-informative-references">
+<a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+        </h3>
+<dl class="references">
+<dt id="RDF">[RDF]</dt>
+        <dd>
+<span class="refAuthor">Cyganiak, R.</span>, <span class="refAuthor">Wood, D.</span>, and <span class="refAuthor">M. Lanthaler</span>, <span class="refTitle">"RDF 1.1 Concepts and Abstract Syntax"</span>, <span class="refContent">W3C Recommendation</span>, <time datetime="2014-02-25" class="refDate">25 February 2014</time>, <span>&lt;<a href="http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/">http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="Unicode-14.0.0">[Unicode-14.0.0]</dt>
+      <dd>
+<span class="refAuthor">The Unicode Consortium</span>, <span class="refTitle">"The Unicode Standard, Version 14.0.0"</span>, <span class="refContent">Mountain View: The Unicode Consortium</span>, <span class="seriesInfo">ISBN 978-1-936213-29-0</span>, <time datetime="2021-09" class="refDate">September 2021</time>, <span>&lt;<a href="https://www.unicode.org/versions/Unicode14.0.0/">https://www.unicode.org/versions/Unicode14.0.0/</a>&gt;</span>. <span class="annotation">Note that while this document references a version that was recent at the time of writing, the statements made based on this version are expected to remain valid for future versions.</span>
+          </dd>
+<dd class="break"></dd>
+</dl>
+</section>
+</section>
+<div id="tag38">
 <section id="appendix-A">
+      <h2 id="name-language-tagged-strings">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-language-tagged-strings" class="section-name selfRef">Language-Tagged Strings</a>
+      </h2>
+<p id="appendix-A-1">This appendix serves as the archival documentation for CBOR Tag 38, a
+tag for serializing language-tagged text strings in CBOR.
+The text of this appendix is adapted from the specification text
+supplied for its initial registration.
+It has been extended to allow supplementing the language tag by a
+direction indication.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<div id="introduction-1">
+<section id="appendix-A.1">
+        <h3 id="name-introduction-2">
+<a href="#appendix-A.1" class="section-number selfRef">A.1. </a><a href="#name-introduction-2" class="section-name selfRef">Introduction</a>
+        </h3>
+<p id="appendix-A.1-1">In some cases it is useful to specify the natural language of a text
+string.  This specification defines a tag that does just that.  One
+technology that supports language-tagged strings is the Resource
+Description Framework (RDF) <span>[<a href="#RDF" class="xref">RDF</a>]</span>.<a href="#appendix-A.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="detailed-semantics">
+<section id="appendix-A.2">
+        <h3 id="name-detailed-semantics">
+<a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-detailed-semantics" class="section-name selfRef">Detailed Semantics</a>
+        </h3>
+<p id="appendix-A.2-1">A language-tagged string in CBOR has the tag 38 and consists of an array
+with a length of 2 or 3.<a href="#appendix-A.2-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-2">The first element is a well-formed language tag under Best Current
+Practice 47 (<span>[<a href="#RFC5646" class="xref">RFC5646</a>]</span> and <span>[<a href="#RFC4647" class="xref">RFC4647</a>]</span>), represented as a UTF-8 text
+string (major type 3).<a href="#appendix-A.2-2" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-3">The second element is an arbitrary UTF-8 text string (major type
+3). Both the language tag and the arbitrary string can optionally be
+annotated with CBOR tags; this is not shown in the CDDL below.<a href="#appendix-A.2-3" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-4">The optional third element, if present, is a Boolean value that
+indicates a direction: <code>false</code> for "ltr" direction, <code>true</code> for "rtl"
+direction.  If the third element is absent, no indication is made
+about the direction.<a href="#appendix-A.2-4" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-5">In CDDL:<a href="#appendix-A.2-5" class="pilcrow">¶</a></p>
+<div id="appendix-A.2-6">
+<pre class="breakable lang-cddl sourcecode">
+tag38 = #6.38([tag38-ltag, text, ?tag38-direction])
+tag38-ltag = text  .abnf ("Language-Tag" .det RFC5646)
+tag38-direction = &amp;(ltr: false, rtl: true)
+
+RFC5646 = '
+ Language-Tag  = langtag             ; normal language tags
+               / privateuse          ; private use tag
+               / grandfathered       ; grandfathered tags
+
+ langtag       = language
+                 ["-" script]
+                 ["-" region]
+                 *("-" variant)
+                 *("-" extension)
+                 ["-" privateuse]
+
+ language      = 2*3ALPHA            ; shortest ISO 639 code
+                 ["-" extlang]       ; sometimes followed by
+                                     ; extended language subtags
+               / 4ALPHA              ; or reserved for future use
+               / 5*8ALPHA            ; or registered language subtag
+
+ extlang       = 3ALPHA              ; selected ISO 639 codes
+                 *2("-" 3ALPHA)      ; permanently reserved
+
+ script        = 4ALPHA              ; ISO 15924 code
+
+ region        = 2ALPHA              ; ISO 3166-1 code
+               / 3DIGIT              ; UN M.49 code
+
+ variant       = 5*8alphanum         ; registered variants
+               / (DIGIT 3alphanum)
+
+ extension     = singleton 1*("-" (2*8alphanum))
+
+                                     ; Single alphanumerics
+                                     ; "x" reserved for private use
+ singleton     = DIGIT               ; 0 - 9
+               / %x41-57             ; A - W
+               / %x59-5A             ; Y - Z
+               / %x61-77             ; a - w
+               / %x79-7A             ; y - z
+
+ privateuse    = "x" 1*("-" (1*8alphanum))
+
+ grandfathered = irregular / regular
+
+ irregular     = "en-GB-oed" / "i-ami" / "i-bnn" / "i-default" /
+               "i-enochian" / "i-hak" / "i-klingon" / "i-lux" /
+               "i-mingo" / "i-navajo" / "i-pwn" / "i-tao" / "i-tay" /
+               "i-tsu" / "sgn-BE-FR" / "sgn-BE-NL" / "sgn-CH-DE"
+
+ regular       = "art-lojban" / "cel-gaulish" / "no-bok" / "no-nyn" /
+               "zh-guoyu" / "zh-hakka" / "zh-min" / "zh-min-nan" /
+               "zh-xiang"
+
+ alphanum      = (ALPHA / DIGIT)     ; letters and numbers
+
+ ALPHA         =  %x41-5A / %x61-7A  ; A-Z / a-z
+ DIGIT         =  %x30-39            ; 0-9
+'
+</pre><a href="#appendix-A.2-6" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.2-7">NOTE: Language tags of any combination of case are allowed. But
+section 2.1.1 of <span>[<a href="#RFC5646" class="xref">RFC5646</a>]</span>, part of Best Current Practice 47,
+recommends a case combination for language tags, that encoders that
+support tag 38 may wish to follow when generating language tags.<a href="#appendix-A.2-7" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-8">Data items with tag 38 that do not meet the criteria above are invalid
+(see <span><a href="https://rfc-editor.org/rfc/rfc8949#section-5.3.2" class="relref">Section 5.3.2</a> of [<a href="#STD94" class="xref">STD94</a>]</span>).<a href="#appendix-A.2-8" class="pilcrow">¶</a></p>
+<p id="appendix-A.2-9">NOTE: The Unicode Standard <span>[<a href="#Unicode-14.0.0" class="xref">Unicode-14.0.0</a>]</span> includes a set of characters
+designed for tagging text (including language tagging), in the range
+U+E0000 to U+E007F. Although many applications, including RDF,
+do not disallow these characters in text strings, the Unicode Consortium
+has deprecated these characters and recommends annotating language via a
+higher-level protocol instead. See the section "Deprecated Tag
+Characters" in  Section 23.9 of <span>[<a href="#Unicode-14.0.0" class="xref">Unicode-14.0.0</a>]</span>.<a href="#appendix-A.2-9" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="examples">
+<section id="appendix-A.3">
+        <h3 id="name-examples">
+<a href="#appendix-A.3" class="section-number selfRef">A.3. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+        </h3>
+<p id="appendix-A.3-1">Examples in this section are given in CBOR diagnostic mode, and then
+as a pretty-printed hexadecimal representation of the encoded item<a href="#appendix-A.3-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.3-2">The following example shows how the English-language string "Hello" is
+encoded.<a href="#appendix-A.3-2" class="pilcrow">¶</a></p>
+<div id="appendix-A.3-3">
+<pre class="lang-cbor-diag sourcecode">
+38(["en", "Hello"])
+</pre><a href="#appendix-A.3-3" class="pilcrow">¶</a>
+</div>
+<div id="appendix-A.3-4">
+<pre class="lang-cbor-pretty sourcecode">
+D8 26               # tag(38)
+   82               # array(2)
+      62            # text(2)
+         656E       # "en"
+      65            # text(5)
+         48656C6C6F # "Hello"
+</pre><a href="#appendix-A.3-4" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3-5">The following example shows how the French-language string "Bonjour" is
+encoded.<a href="#appendix-A.3-5" class="pilcrow">¶</a></p>
+<div id="appendix-A.3-6">
+<pre class="lang-cbor-diag sourcecode">
+38(["fr", "Bonjour"])
+</pre><a href="#appendix-A.3-6" class="pilcrow">¶</a>
+</div>
+<div id="appendix-A.3-7">
+<pre class="lang-cbor-pretty sourcecode">
+D8 26                   # tag(38)
+   82                   # array(2)
+      62                # text(2)
+         6672           # "fr"
+      67                # text(7)
+         426F6E6A6F7572 # "Bonjour"
+</pre><a href="#appendix-A.3-7" class="pilcrow">¶</a>
+</div>
+<p id="appendix-A.3-8">(TODO: Add example with direction)<a href="#appendix-A.3-8" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="acknowledgments">
+<section id="appendix-B">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
       </h2>
-<p id="appendix-A-1"><span class="contact-name">Mark Nottingham</span> and <span class="contact-name">Erik Wilde</span>, authors of RFC 7807.
+<p id="appendix-B-1"><span class="contact-name">Mark Nottingham</span> and <span class="contact-name">Erik Wilde</span>, authors of RFC 7807.
 <span class="contact-name">Klaus Hartke</span> and <span class="contact-name">Jaime Jiménez</span>, co-authors of an earlier generation of
 this specification.
-<span class="contact-name">Christian Amsüss</span> and <span class="contact-name">Marco Tiloca</span> for review and comments on this document.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<span class="contact-name">Christian Amsüss</span> and <span class="contact-name">Marco Tiloca</span> for review and comments on this document.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2">For <a href="#tag38" class="xref">Appendix A</a>, John Cowan and Doug Ewell are also to be acknowledged.
+The content of an earlier version of this appendix was also discussed
+in the "apps-discuss at ietf.org" and "ltru at ietf.org" mailing
+lists.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-B">
+<section id="appendix-C">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
@@ -1843,6 +2086,17 @@ this specification.
 <div class="email">
 <span>Email:</span>
 <a href="mailto:cabo@tzi.org" class="email">cabo@tzi.org</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Peter Occil</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:poccil14%20at%20gmail%20dot%20com" class="email">poccil14 at gmail dot com</a>
+</div>
+<div class="url">
+<span>URI:</span>
+<a href="http://peteroupc.github.io/CBOR/" class="url">http://peteroupc.github.io/CBOR/</a>
 </div>
 </address>
 </section>
