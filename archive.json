@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-05-08T01:17:16.101967+00:00",
+  "timestamp": "2022-05-17T01:18:24.667709+00:00",
   "repo": "core-wg/core-problem-details",
   "labels": [
     {
@@ -47,6 +47,11 @@
       "name": "wontfix",
       "description": "This will not be worked on",
       "color": "ffffff"
+    },
+    {
+      "name": "WGLC",
+      "description": "working group last call reviews",
+      "color": "006b75"
     }
   ],
   "issues": [
@@ -365,6 +370,24 @@
           "updatedAt": "2022-05-06T22:26:29Z"
         }
       ]
+    },
+    {
+      "number": 17,
+      "id": "I_kwDOD7eoo85Ju_8Z",
+      "title": "Marco's review",
+      "url": "https://github.com/core-wg/core-problem-details/issues/17",
+      "state": "OPEN",
+      "author": "thomas-fossati",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "WGLC"
+      ],
+      "body": "https://mailarchive.ietf.org/arch/msg/core/7_Oqt82j4tl69IG6--FrSoRN8uQ/\r\n\r\n```\r\n[Section 1.1]\r\n\r\n* Please add the usual remark \"Readers are expected to be familiar with ...\"\r\n\r\n\r\n[Section 2]\r\n\r\n* The caption of Figure 2 can better say \"Concise Problem Details Data \r\nItem\".\r\n\r\n* The definition of the 'title' entry says: \"It SHOULD NOT change from \r\noccurrence to occurrence of the problem.\"\r\n\r\n    Do you mean \"of the same problem\" ?\r\n\r\n* The definition of 'response-code' can be expanded to also point to \r\nSection 3 of RFC 7252, and explicitly say that the response code here is \r\nexactly the value of the 'Code' field in the header of the CoAP \r\nresponse. This would complement the statement and example in the last \r\nparagraph of the section.\r\n\r\n* When defining the entry 'response-code', it is good to have a pointer \r\nalso to Section 3.2 of RFC 8132, thus covering also 4.09 and 4.22.\r\n\r\n* \"Note that, unlike [RFC7807], Concise Problem Details data items have \r\nno explicit type.\"\r\n\r\nConsistently, please consider the following changes to avoid possible \r\nconfusion:\r\n\r\n    - In Section 1, use \"problem classes\" rather than \"problem types\".\r\n\r\n    - In Section 2, use \"summary of the problem class\" rather than \r\n\"summary of the problem type\" when defining the 'title' entry. A few \r\nparagraphs below, \"shorthand for the category of the error\" can also \r\nbecome \"shorthand for the class of the error\".\r\n\r\n    - In Section 3, use \"generic problem class container\" rather than \r\n\"generic problem type container\".\r\n\r\n    - In Section 5.1, as to the \"Brief description\" for 'title' in Table \r\n1, use \"problem class\" rather than \"problem type\".\r\n\r\n\r\n[Section 3.1]\r\n\r\n* \"Consumers of a Concise Problem Details instance MUST ignore ...\"\r\n\r\n    I think it is better to use \"data item\" rather than \"instance\". That \r\nwould be consistent with the text in other sections and would avoid \r\nconfusion with the 'instance' entry.\r\n\r\n\r\n[Section 3.2]\r\n\r\n* \"Consumers of a Concise Problem Details instance MUST ignore ...\"\r\n\r\n    See the comment above about using \"data item\" rather than \"instance\".\r\n\r\n* Is it admitted to change the definition of an already existing Custom \r\nProblem Details entry, by updating the related documentation? Or is it \r\nsomething to discourage or even forbid, rather preferring a new entry to \r\nbe defined altogether?\r\n\r\n\r\n[Section 5.1]\r\n\r\n* For 'title' and 'detail', shouldn't the CDDL Type be \"text/array\", \r\nrather than \"text\"? If tag 38 is used, that applies to an array, as per \r\nAppendix A.2.\r\n\r\n\r\n[Nits]\r\n\r\n* Section 3.1, s/so they never can/so they can never\r\n\r\n* Section 3.2, s/the nested map any/the nested map, any\r\n\r\n* Section 3.2, s/for extension that/for extensions that\r\n\r\n* Section 3.2, s/compact representation, in/compact representation. In\r\n\r\n* Section 3.2, s/principle, MUST NOT be/principle, it MUST NOT be\r\n\r\n* Section 5.1, s/Entries in Standard/Entries in the Standard\r\n\r\n* Section 5.2, s/Entries in Custom/Entries in the Custom\r\n\r\n* Table 1/2/3, s/RFCXXXX/RFC XXXX\r\n\r\n* Appendix B (2 instances), s/Concise Problem Details item/Concise \r\nProblem Details data item\r\n\r\n* Appendix B (2 instances), s/Custom Problem Detail entry/Custom Problem \r\nDetails entry\r\n```",
+      "createdAt": "2022-05-16T12:08:05Z",
+      "updatedAt": "2022-05-16T12:08:13Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
