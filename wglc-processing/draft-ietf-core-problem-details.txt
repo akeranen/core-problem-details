@@ -20,13 +20,16 @@ Abstract
    inspired by, but intended to be more concise than, the Problem
    Details for HTTP APIs defined in RFC 7807.
 
-Discussion Venues
+About This Document
 
    This note is to be removed before publishing as an RFC.
 
-   Discussion of this document takes place on the CORE Working Group
-   mailing list (core@ietf.org), which is archived at
-   https://mailarchive.ietf.org/arch/browse/core/.
+   Status information for this document may be found at
+   https://datatracker.ietf.org/doc/draft-ietf-core-problem-details/.
+
+   Discussion of this document takes place on the Constrained RESTful
+   Environments Working Group mailing list (mailto:core@ietf.org), which
+   is archived at https://mailarchive.ietf.org/arch/browse/core/.
 
    Source for this draft and an issue tracker can be found at
    https://github.com/core-wg/core-problem-details.
@@ -341,11 +344,22 @@ Table of Contents
    entries are defined specifically to the identifier of that Custom
    Problem Detail entry, the documentation of which defines these
    internal entries, typically chosen to address a given application
-   domain.  Consumers of a Concise Problem Details data item MUST ignore
-   any Custom Problem Detail entries, or keys inside the Custom Problem
+   domain.
+
+   Consumers of a Concise Problem Details data item MUST ignore any
+   Custom Problem Detail entries, or keys inside the Custom Problem
    Detail entries, that they do not recognize; this allows Custom
    Problem Detail entries to evolve and include additional information
-   in the future.
+   in the future.  The assumption is that this is done in a backward and
+   forward compatible way.
+
+   Sometimes, Custom Problem Detail entries can evolve in a way where
+   forward compatibility by "ignore unknown" would not be appropriate:
+   e.g., when needing to add a "must-understand" member, which can only
+   be ignored at the peril of misunderstanding the Concise Problem
+   Details data item ("false interoperability").  In this case, a new
+   Custom Problem Detail key can simply be registered for this case,
+   keeping the old key backward and forward-compatible.
 
 4.  Security Considerations
 

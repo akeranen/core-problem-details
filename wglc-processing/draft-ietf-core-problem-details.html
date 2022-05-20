@@ -1066,15 +1066,18 @@ is inspired by, but intended to be more concise than, the Problem
 Details for HTTP APIs defined in RFC 7807.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
-      <h2 id="name-discussion-venues">
-<a href="#name-discussion-venues" class="section-name selfRef">Discussion Venues</a>
+      <h2 id="name-about-this-document">
+<a href="#name-about-this-document" class="section-name selfRef">About This Document</a>
       </h2>
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
-<p id="section-note.1-2">Discussion of this document takes place on the
-  CORE Working Group mailing list (core@ietf.org),
-  which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/core/">https://mailarchive.ietf.org/arch/browse/core/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
-<p id="section-note.1-3">Source for this draft and an issue tracker can be found at
-  <span><a href="https://github.com/core-wg/core-problem-details">https://github.com/core-wg/core-problem-details</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+<p id="section-note.1-2">
+        Status information for this document may be found at <span><a href="https://datatracker.ietf.org/doc/draft-ietf-core-problem-details/">https://datatracker.ietf.org/doc/draft-ietf-core-problem-details/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+<p id="section-note.1-3">
+        Discussion of this document takes place on the
+        Constrained RESTful Environments Working Group mailing list (<span><a href="mailto:core@ietf.org">mailto:core@ietf.org</a></span>),
+        which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/core/">https://mailarchive.ietf.org/arch/browse/core/</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+<p id="section-note.1-4">Source for this draft and an issue tracker can be found at
+        <span><a href="https://github.com/core-wg/core-problem-details">https://github.com/core-wg/core-problem-details</a></span>.<a href="#section-note.1-4" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -1510,11 +1513,21 @@ the same example but using a registered unsigned int as
 <p id="section-3.2-10">In summary, the keys for the maps used inside Custom Problem Detail
 entries are defined specifically to the identifier of that Custom Problem Detail
 entry, the documentation of which defines these internal entries,
-typically chosen to address a given application domain.
-Consumers of a Concise Problem Details data item <span class="bcp14">MUST</span> ignore any Custom
+typically chosen to address a given application domain.<a href="#section-3.2-10" class="pilcrow">¶</a></p>
+<p id="section-3.2-11">Consumers of a Concise Problem Details data item <span class="bcp14">MUST</span> ignore any Custom
 Problem Detail entries, or keys inside the Custom Problem Detail
 entries, that they do not recognize; this allows Custom Problem Detail
-entries to evolve and include additional information in the future.<a href="#section-3.2-10" class="pilcrow">¶</a></p>
+entries to evolve and include additional information in the future.
+The assumption is that this is done in a backward and forward
+compatible way.<a href="#section-3.2-11" class="pilcrow">¶</a></p>
+<p id="section-3.2-12">Sometimes, Custom Problem Detail entries can evolve in a way where
+forward compatibility by "ignore unknown" would not be appropriate:
+e.g., when needing to add a "must-understand" member, which can only
+be ignored at the peril of misunderstanding the Concise Problem
+Details data item ("false interoperability").
+In this case, a new Custom Problem Detail key can simply be
+registered for this case, keeping the old key backward and
+forward-compatible.<a href="#section-3.2-12" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
