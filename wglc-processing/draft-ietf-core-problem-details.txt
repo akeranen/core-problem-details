@@ -397,30 +397,31 @@ Table of Contents
 
    Initial entries in this sub-registry are as follows:
 
-   +=======+===============+=======+======================+===========+
-   | Key   | Name          | CDDL  | Brief description    | Reference |
-   | value |               | Type  |                      |           |
-   +=======+===============+=======+======================+===========+
-   | -1    | title         | text  | short, human-        | RFC XXXX  |
-   |       |               |       | readable summary of  |           |
-   |       |               |       | the problem shape    |           |
-   +-------+---------------+-------+----------------------+-----------+
-   | -2    | detail        | text  | human-readable       | RFC XXXX  |
-   |       |               |       | explanation specific |           |
-   |       |               |       | to this occurrence   |           |
-   |       |               |       | of the problem       |           |
-   +-------+---------------+-------+----------------------+-----------+
-   | -3    | instance      | ~uri  | URI reference        | RFC XXXX  |
-   |       |               |       | identifying specific |           |
-   |       |               |       | occurrence of the    |           |
-   |       |               |       | problem              |           |
-   +-------+---------------+-------+----------------------+-----------+
-   | -4    | response-code | uint  | CoAP response code   | RFC XXXX  |
-   |       |               | .size |                      |           |
-   |       |               | 1     |                      |           |
-   +-------+---------------+-------+----------------------+-----------+
+   +=======+===============+========+======================+===========+
+   | Key   | Name          | CDDL   | Brief description    | Reference |
+   | value |               | Type   |                      |           |
+   +=======+===============+========+======================+===========+
+   | -1    | title         | text   | short, human-        | RFC XXXX  |
+   |       |               | or     | readable summary of  |           |
+   |       |               | tag    | the problem shape    |           |
+   |       |               | 38     |                      |           |
+   +-------+---------------+--------+----------------------+-----------+
+   | -2    | detail        | text   | human-readable       | RFC XXXX  |
+   |       |               | or     | explanation specific |           |
+   |       |               | tag    | to this occurrence   |           |
+   |       |               | 38     | of the problem       |           |
+   +-------+---------------+--------+----------------------+-----------+
+   | -3    | instance      | ~uri   | URI reference        | RFC XXXX  |
+   |       |               |        | identifying specific |           |
+   |       |               |        | occurrence of the    |           |
+   |       |               |        | problem              |           |
+   +-------+---------------+--------+----------------------+-----------+
+   | -4    | response-code | uint   | CoAP response code   | RFC XXXX  |
+   |       |               | .size  |                      |           |
+   |       |               | 1      |                      |           |
+   +-------+---------------+--------+----------------------+-----------+
 
-   Table 1: Initial Entries in the Standard Problem Detail Key registry
+    Table 1: Initial Entries in the Standard Problem Detail Key registry
 
 5.2.  Custom Problem Detail Key registry
 
