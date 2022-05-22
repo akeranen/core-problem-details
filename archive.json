@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-05-17T01:18:24.667709+00:00",
+  "timestamp": "2022-05-22T01:17:11.408470+00:00",
   "repo": "core-wg/core-problem-details",
   "labels": [
     {
@@ -1642,6 +1642,91 @@
               "body": "It was returning version 1.5.25, but gem update was happy with the status quo.  I have uninstalled and installed again and now I'm running 1.6.8 which works like a charm.",
               "createdAt": "2022-05-06T22:16:33Z",
               "updatedAt": "2022-05-06T22:16:34Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "PR_kwDOD7eoo844MPW0",
+      "title": "Wglc processing",
+      "url": "https://github.com/core-wg/core-problem-details/pull/18",
+      "state": "OPEN",
+      "author": "cabo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2022-05-20T13:33:40Z",
+      "updatedAt": "2022-05-20T15:31:50Z",
+      "baseRepository": "core-wg/core-problem-details",
+      "baseRefName": "master",
+      "baseRefOid": "637d4c8a5a2ccd32b5c5f2375187474c9f429ec8",
+      "headRepository": "core-wg/core-problem-details",
+      "headRefName": "wglc-processing",
+      "headRefOid": "9c081216a58ace9fc77483b27b83f34ed62e271b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOD7eoo846bVMv",
+          "commit": {
+            "abbreviatedOid": "fbb939f"
+          },
+          "author": "thomas-fossati",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-05-20T14:49:21Z",
+          "updatedAt": "2022-05-20T14:58:14Z",
+          "comments": [
+            {
+              "originalPosition": 56,
+              "body": "\u2764\ufe0f ",
+              "createdAt": "2022-05-20T14:49:21Z",
+              "updatedAt": "2022-05-20T14:58:14Z"
+            },
+            {
+              "originalPosition": 197,
+              "body": "CDDL type should be text / tag38",
+              "createdAt": "2022-05-20T14:53:22Z",
+              "updatedAt": "2022-05-20T14:58:14Z"
+            },
+            {
+              "originalPosition": 196,
+              "body": "Just a note of colour.  What the HTTPbis WG has in its [style guide](https://httpwg.org/admin/editors/style-guide#self-references) about references to self is pretty cute.\r\n\r\nBTW, CoRE should have a similar document in the core-wg pages :-)",
+              "createdAt": "2022-05-20T14:56:02Z",
+              "updatedAt": "2022-05-20T15:31:50Z"
+            },
+            {
+              "originalPosition": 251,
+              "body": "Maybe we could stick a ref to 8075 here.",
+              "createdAt": "2022-05-20T14:58:08Z",
+              "updatedAt": "2022-05-20T14:58:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOD7eoo846bbuO",
+          "commit": {
+            "abbreviatedOid": "fbb939f"
+          },
+          "author": "cabo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2022-05-20T15:06:14Z",
+          "updatedAt": "2022-05-20T15:06:15Z",
+          "comments": [
+            {
+              "originalPosition": 197,
+              "body": "Sorry, I was too slow...\r\n",
+              "createdAt": "2022-05-20T15:06:14Z",
+              "updatedAt": "2022-05-20T15:06:15Z"
             }
           ]
         }
