@@ -5,8 +5,8 @@
 CoRE Working Group                                            T. Fossati
 Internet-Draft                                                       arm
 Intended status: Standards Track                              C. Bormann
-Expires: 21 November 2022                         Universität Bremen TZI
-                                                             20 May 2022
+Expires: 24 November 2022                         Universität Bremen TZI
+                                                             23 May 2022
 
 
                  Concise Problem Details For CoAP APIs
@@ -49,7 +49,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 November 2022.
+   This Internet-Draft will expire on 24 November 2022.
 
 Copyright Notice
 
@@ -456,7 +456,8 @@ Table of Contents
       |       |             | Problem Details data item |           |
       +-------+-------------+---------------------------+-----------+
 
-       Table 2: Initial Entries in Custom Problem Detail Key registry
+         Table 2: Initial Entries in the Custom Problem Detail Key
+                                  registry
 
 5.3.  Media Type
 
