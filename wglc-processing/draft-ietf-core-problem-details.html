@@ -1372,8 +1372,25 @@ consumers a shorthand for the category (problem shape) of the error encountered.
 <p id="section-2-9">Note that the "instance" URI reference may be relative; this means
 that it must be resolved relative to the representation's base URI, as
 per <span><a href="https://rfc-editor.org/rfc/rfc3986#section-5" class="relref">Section 5</a> of [<a href="#STD66" class="xref">STD66</a>]</span>.<a href="#section-2-9" class="pilcrow">¶</a></p>
-<p id="section-2-10">Note that the "response code" value is a numeric representation of the
-actual code (see <span><a href="https://rfc-editor.org/rfc/rfc7252#section-3" class="relref">Section 3</a> of [<a href="#RFC7252" class="xref">RFC7252</a>]</span>), so it does not take the usual form that resembles an
+<p id="section-2-10">The "response-code" member, if present, is only advisory; it conveys
+the CoAP response code used for the convenience of the consumer.
+Generators <span class="bcp14">MUST</span> use the same response code here as in the actual CoAP
+response; the latter is needed to assure that generic CoAP software that
+does not understand the problem-details format still behaves
+correctly.
+Consumers can use the response-code member to determine what the
+original response code used by the generator was, in cases where it
+has been changed (e.g., by an intermediary or cache), and when message
+bodies persist without CoAP information (e.g., in an events log or analytics
+database).
+Generic CoAP software will still use the CoAP response code.
+To support the use case of message body persistence without support by
+the problem-details generator, the entity that persists the Concise
+Problem Details data item can copy over the CoAP response code
+that it received on the CoAP level.
+Note that the "response-code" value is a numeric representation of the
+actual code (see <span><a href="https://rfc-editor.org/rfc/rfc7252#section-3" class="relref">Section 3</a> of [<a href="#RFC7252" class="xref">RFC7252</a>]</span>), so it does not take the usual
+presentation form that resembles an
 HTTP status code -- <code>4.04 Not found</code> is represented by the number 132.<a href="#section-2-10" class="pilcrow">¶</a></p>
 </section>
 </div>
